@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recImageList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+
+        <LinearLayout
+            android:id="@+id/llFolderContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#AA000000"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:weightSum="4">
+
+            <android.support.v4.widget.Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recFolderList"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="bottom"
+                android:layout_weight="3"
+                android:background="@color/imgsel_white"></android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/imgsel_gray"
+        android:gravity="bottom"
+        android:padding="10dp">
+
+        <org.jun1or.imgsel.image.PressWatchTextView
+            android:id="@+id/tvFolderName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="所有图片"
+            android:textColor="@color/imgsel_white"
+            android:textSize="16sp"/>
+
+        <org.jun1or.imgsel.image.RightBottomTriAngleView
+            android:id="@+id/triangleView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tvFolderName"
+            android:layout_toRightOf="@+id/tvFolderName"/>
+
+        <com.istrong.widget.view.AlphaTextView
+            android:id="@+id/tvPreView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="预览"
+            android:textColor="@color/imgsel_white"
+            android:textSize="16sp"/>
+    </RelativeLayout>
+
+</LinearLayout>

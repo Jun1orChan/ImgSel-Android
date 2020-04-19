@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="?attr/actionBarSize"
+             android:background="@color/colorPrimary"
+             android:padding="@dimen/imgsel_padding">
+
+    <com.istrong.widget.view.AlphaImageButton
+        android:id="@+id/imgBack"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="left|center_vertical"
+        android:background="@null"
+        android:padding="@dimen/imgsel_padding"
+        android:scaleType="fitCenter"/>
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@color/imgsel_white"
+        android:textSize="@dimen/imgsel_title_text_size"/>
+
+    <com.istrong.widget.view.AlphaTextView
+        android:id="@+id/tvRight"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical|right"
+        android:clickable="true"
+        android:gravity="center"
+        android:paddingRight="@dimen/imgsel_padding"
+        android:textSize="@dimen/imgsel_select_text_size"/>
+</FrameLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="imgsel_split_line">#11112233</color>
+    <color name="imgsel_white">#ffffff</color>
+    <color name="imgsel_gray">#b0b0b0</color>
+    <color name="imgsel_text">#CC333333</color>
+    <color name="imgsel_bg_selector">#77B0B0B0</color>
+</resources>

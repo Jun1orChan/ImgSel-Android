@@ -1,0 +1,19 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.istrong.imgsel">
+
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <application>
+        <activity
+            android:name="org.jun1or.imgsel.image.ImageSelectActivity"
+            android:theme="@style/ImgSelTheme">
+        </activity>
+        <activity
+            android:name="org.jun1or.imgsel.preview.ImagePreviewActivity"
+            android:theme="@style/ImgSelTheme">
+        </activity>
+    </application>
+
+</manifest>
