@@ -5,14 +5,18 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.istrong.util.DisplayUtil;
+import androidx.annotation.Nullable;
+
+import org.jun1or.util.DisplayUtil;
 
 
+/**
+ * @author cwj
+ */
 public class RightBottomTriAngleView extends View {
 
     private Paint mPaint;

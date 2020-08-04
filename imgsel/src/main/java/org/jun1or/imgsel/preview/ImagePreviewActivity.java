@@ -2,24 +2,29 @@ package org.jun1or.imgsel.preview;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.istrong.imgsel.R;
-import org.jun1or.imgsel.bean.Image;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
+
 import org.jun1or.imgsel.ImageConfig;
-import com.istrong.util.DisplayUtil;
-import com.istrong.util.StatusBarUtil;
+import org.jun1or.imgsel.R;
+import org.jun1or.imgsel.bean.Image;
+import org.jun1or.util.DisplayUtil;
+import org.jun1or.util.StatusBarUtil;
 
 import java.util.List;
 
 
+/**
+ * @author cwj
+ */
 public class ImagePreviewActivity extends AppCompatActivity implements ImageViewPagerAdapter.OnImageClickListener,
         ViewPager.OnPageChangeListener, View.OnClickListener {
 
@@ -34,8 +39,9 @@ public class ImagePreviewActivity extends AppCompatActivity implements ImageView
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         mISConfig = getIntent().getParcelableExtra(KEY_config);
-        if (mISConfig == null)
+        if (mISConfig == null) {
             mISConfig = new ImageConfig.Builder().build();
+        }
         List<Image> imageList = getIntent().getParcelableArrayListExtra(KEY_IMAGELIST);
         if (imageList != null) {
             sImageList = imageList;
@@ -89,8 +95,9 @@ public class ImagePreviewActivity extends AppCompatActivity implements ImageView
 
     @Override
     public void onPageSelected(int position) {
-        if (sImageList == null || sImageList.size() == 0)
+        if (sImageList == null || sImageList.size() == 0) {
             return;
+        }
         TextView tvTitle = (TextView) findViewById(R.id.tvTitle);
         tvTitle.setText((position + 1) + "/" + sImageList.size());
     }

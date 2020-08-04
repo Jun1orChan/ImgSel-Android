@@ -4,6 +4,9 @@ package org.jun1or.imgsel.bean;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+/**
+ * @author cwj
+ */
 public class Image implements Parcelable {
 
     public String path;
@@ -36,12 +39,16 @@ public class Image implements Parcelable {
         long minute = (durationMs - day * dd - hour * hh) / mi;
         long second = (durationMs - day * dd - hour * hh - minute * mi) / ss;
         long milliSecond = durationMs - day * dd - hour * hh - minute * mi - second * ss;
-
-        String strDay = day < 10 ? "0" + day : "" + day; //天
-        String strHour = hour < 10 ? "0" + hour : "" + hour;//小时
-        String strMinute = minute < 10 ? "0" + minute : "" + minute;//分钟
-        String strSecond = second < 10 ? "0" + second : "" + second;//秒
-        String strMilliSecond = milliSecond < 10 ? "0" + milliSecond : "" + milliSecond;//毫秒
+        //天
+        String strDay = day < 10 ? "0" + day : "" + day;
+        //小时
+        String strHour = hour < 10 ? "0" + hour : "" + hour;
+        //分钟
+        String strMinute = minute < 10 ? "0" + minute : "" + minute;
+        //秒
+        String strSecond = second < 10 ? "0" + second : "" + second;
+        //毫秒
+        String strMilliSecond = milliSecond < 10 ? "0" + milliSecond : "" + milliSecond;
         strMilliSecond = milliSecond < 100 ? "0" + strMilliSecond : "" + strMilliSecond;
 
         return strMinute + " : " + strSecond + "";

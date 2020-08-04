@@ -5,7 +5,7 @@
              android:background="@color/colorPrimary"
              android:padding="@dimen/imgsel_padding">
 
-    <com.istrong.widget.view.AlphaImageButton
+    <org.jun1or.widget.view.AlphaImageButton
         android:id="@+id/imgBack"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -23,7 +23,7 @@
         android:textColor="@color/imgsel_white"
         android:textSize="@dimen/imgsel_title_text_size"/>
 
-    <com.istrong.widget.view.AlphaTextView
+    <org.jun1or.widget.view.AlphaTextView
         android:id="@+id/tvRight"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"

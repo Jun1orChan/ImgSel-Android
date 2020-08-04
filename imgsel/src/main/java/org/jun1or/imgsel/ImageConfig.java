@@ -4,28 +4,46 @@ import android.graphics.Color;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.istrong.imgsel.R;
 
 import java.util.ArrayList;
 
 
+/**
+ * @author cwj
+ */
 public class ImageConfig implements Parcelable {
 
-    //文本颜色
+    /**
+     * 文本颜色
+     */
     public int mTextColor;
-    //标题
+    /**
+     * 标题
+     */
     public String mTitle;
-    //回退图标
+    /**
+     * 回退图标
+     */
     public int mBackImageRes;
-    //最大选择图片数量
+    /**
+     * 最大选择图片数量
+     */
     public int mMaxNum;
-    //是否多选
+    /**
+     * 是否多选
+     */
     public boolean mMultiSelect;
-    //已选择图片列表
+    /**
+     * 已选择图片列表
+     */
     public ArrayList<String> mImgList;
-    //状态栏模式,1:LightMode,0:DarkMode
+    /**
+     * 状态栏模式,1:LightMode,0:DarkMode
+     */
     public int mMode = 0;
-    //状态栏背景色
+    /**
+     * 状态栏背景色
+     */
     public int mTopBarBgColor;
     public boolean mTitleBold;
 

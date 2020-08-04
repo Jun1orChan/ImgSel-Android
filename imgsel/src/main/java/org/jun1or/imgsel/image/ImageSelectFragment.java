@@ -5,14 +5,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.CursorLoader;
-import android.support.v4.content.Loader;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,17 +15,26 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.istrong.imgsel.R;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.CursorLoader;
+import androidx.loader.content.Loader;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+
+import org.jun1or.imgsel.ImageConfig;
+import org.jun1or.imgsel.R;
 import org.jun1or.imgsel.adapter.FolderListRecAdapter;
 import org.jun1or.imgsel.adapter.ImageListRecAdapter;
 import org.jun1or.imgsel.bean.Folder;
-import org.jun1or.imgsel.ImageConfig;
 import org.jun1or.imgsel.bean.Image;
 import org.jun1or.imgsel.preview.ImagePreviewActivity;
-
-import com.istrong.util.FileUtil;
-import com.istrong.widget.divider.DividerItemDecoration;
-import com.istrong.widget.divider.GridDividerItemDecoration;
+import org.jun1or.util.FileUtil;
+import org.jun1or.widget.divider.DividerItemDecoration;
+import org.jun1or.widget.divider.GridDividerItemDecoration;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -77,8 +78,9 @@ public class ImageSelectFragment extends Fragment implements View.OnClickListene
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.imgsel_fragment_image_select, null, false);
         mISConfig = getArguments().getParcelable(KEY_Config);
-        if (mISConfig == null)
+        if (mISConfig == null) {
             mISConfig = new ImageConfig.Builder().build();
+        }
         return view;
     }
 
@@ -118,8 +120,9 @@ public class ImageSelectFragment extends Fragment implements View.OnClickListene
 
     private List<Image> convert(List<String> oriImageList) {
         ArrayList<Image> imageList = new ArrayList<>();
-        if (oriImageList == null)
+        if (oriImageList == null) {
             return imageList;
+        }
         for (String path : oriImageList) {
             Image image = new Image();
             image.path = path;
@@ -131,9 +134,7 @@ public class ImageSelectFragment extends Fragment implements View.OnClickListene
 
     private void initBot(final View view) {
         final RightBottomTriAngleView rightBottomTriAngleView = (RightBottomTriAngleView) view.findViewById(R.id.triangleView);
-//        rightBottomTriAngleView.setTriangleColor(mISConfig.mTextColor);
         mTvFolderName = (PressWatchTextView) view.findViewById(R.id.tvFolderName);
-//        mTvFolderName.setTextColor(mISConfig.mTextColor);
         mTvFolderName.setText("所有图片");
         mTvFolderName.setOnClickListener(this);
         mTvFolderName.setOnPressWatchListener(new PressWatchTextView.OnPressWatchListener() {
@@ -147,7 +148,6 @@ public class ImageSelectFragment extends Fragment implements View.OnClickListene
             }
         });
         TextView tvPreview = (TextView) view.findViewById(R.id.tvPreView);
-//        tvPreview.setTextColor(mISConfig.mTextColor);
         tvPreview.setOnClickListener(this);
     }
 
@@ -242,8 +242,9 @@ public class ImageSelectFragment extends Fragment implements View.OnClickListene
             toggleFolderList(v);
         } else if (id == R.id.tvPreView) {
             //预览
-            if (mImageListRecAdapter.getCheckedList().size() == 0)
+            if (mImageListRecAdapter.getCheckedList().size() == 0) {
                 return;
+            }
             Intent intent = new Intent(v.getContext(), ImagePreviewActivity.class);
             intent.putExtra(ImagePreviewActivity.KEY_config, mISConfig);
             intent.putParcelableArrayListExtra(ImagePreviewActivity.KEY_IMAGELIST, (ArrayList<Image>) mImageListRecAdapter.getCheckedList());
@@ -256,10 +257,11 @@ public class ImageSelectFragment extends Fragment implements View.OnClickListene
     }
 
     private void toggleFolderList(View view) {
-        if (mLlFolderContainer.getVisibility() == View.VISIBLE)
+        if (mLlFolderContainer.getVisibility() == View.VISIBLE) {
             hideFolderList(view.getContext());
-        else
+        } else {
             showFolderList(view.getContext());
+        }
     }
 
     private void hideFolderList(Context context) {
@@ -307,7 +309,8 @@ public class ImageSelectFragment extends Fragment implements View.OnClickListene
     @Override
     public void onMediaClick(Image curImage, int position) {
         Intent intent = new Intent(getActivity(), ImagePreviewActivity.class);
-        ImagePreviewActivity.sImageList = mImageListRecAdapter.getImageList();//防止界面传输量太大，导致奔溃
+        //防止界面传输量太大，导致奔溃
+        ImagePreviewActivity.sImageList = mImageListRecAdapter.getImageList();
         intent.putExtra(ImagePreviewActivity.KEY_config, mISConfig);
         intent.putExtra(ImagePreviewActivity.KEY_index, position);
         startActivity(intent);
@@ -315,8 +318,9 @@ public class ImageSelectFragment extends Fragment implements View.OnClickListene
 
     @Override
     public void onReachMaxNum(int maxNum) {
-        if (getActivity() != null)
+        if (getActivity() != null) {
             Toast.makeText(getActivity(), String.format(getString(R.string.imgsel_reach_max_num), maxNum + ""), Toast.LENGTH_SHORT).show();
+        }
     }
 
 //    @Override

@@ -1,10 +1,11 @@
 package org.jun1or.imgsel.image;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 
-import com.istrong.widget.view.AlphaTextView;
+import androidx.annotation.Nullable;
+
+import org.jun1or.widget.view.AlphaTextView;
 
 
 public class PressWatchTextView extends AlphaTextView {
@@ -37,6 +38,11 @@ public class PressWatchTextView extends AlphaTextView {
 
 
     public interface OnPressWatchListener {
+        /**
+         * 按下
+         *
+         * @param pressed
+         */
         void onPressWath(boolean pressed);
     }
 }

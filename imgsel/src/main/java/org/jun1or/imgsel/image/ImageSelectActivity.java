@@ -1,29 +1,34 @@
 package org.jun1or.imgsel.image;
 
-import android.Manifest;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.istrong.dialog.MaterialDialog;
-import com.istrong.imgsel.R;
-import org.jun1or.imgsel.ImageConfig;
-import org.jun1or.imgsel.bean.Image;
-import com.istrong.util.AppUtil;
-import com.istrong.util.StatusBarUtil;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
+import com.yanzhenjie.permission.runtime.Permission;
+
+import org.jun1or.dialog.MaterialDialog;
+import org.jun1or.imgsel.ImageConfig;
+import org.jun1or.imgsel.R;
+import org.jun1or.imgsel.bean.Image;
+import org.jun1or.util.AppUtil;
+import org.jun1or.util.StatusBarUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author cwj
+ */
 public class ImageSelectActivity extends AppCompatActivity implements View.OnClickListener {
 
     public static final String KEY_config = "config";
@@ -60,7 +65,7 @@ public class ImageSelectActivity extends AppCompatActivity implements View.OnCli
     private void getPermission() {
         AndPermission.with(this)
                 .runtime()
-                .permission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                .permission(Permission.READ_EXTERNAL_STORAGE)
                 .onGranted(new Action<List<String>>() {
                     @Override
                     public void onAction(List<String> data) {
@@ -129,8 +134,9 @@ public class ImageSelectActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void showPermissionDeniedDialog() {
-        if (mPermissionDeniedDialog == null)
+        if (mPermissionDeniedDialog == null) {
             mPermissionDeniedDialog = new MaterialDialog();
+        }
         mPermissionDeniedDialog
                 .content(String.format(getString(R.string.imgsel_storage_permission_denied_tips),
                         AppUtil.getAppName(this), AppUtil.getAppName(this)))
@@ -163,8 +169,9 @@ public class ImageSelectActivity extends AppCompatActivity implements View.OnCli
 
     private void resultData() {
         Intent intent = new Intent();
-        if (mSelectedImageList == null)
+        if (mSelectedImageList == null) {
             mSelectedImageList = new ArrayList();
+        }
         intent.putParcelableArrayListExtra(KEY_result, (ArrayList) mSelectedImageList);
         setResult(RESULT_OK, intent);
         finish();

@@ -3,7 +3,6 @@ package org.jun1or.mediaselect_android;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -12,13 +11,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import org.jun1or.imgsel.ISNav;
 import org.jun1or.imgsel.ImageConfig;
 import org.jun1or.imgsel.callback.ImageLoader;
 import org.jun1or.imgsel.image.ImageSelectActivity;
+import org.jun1or.mediaselect_android.glide.GlideApp;
 
-import com.istrong.mediaselect_android.R;
-import com.istrong.mediaselect_android.glide.GlideApp;
 
 import java.util.ArrayList;
 import java.util.List;

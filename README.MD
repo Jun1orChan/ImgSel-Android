@@ -6,16 +6,10 @@
 
 ## 引用
 
-1.在根目录build.gradle文件中添加
+1.项目build.gradle文件中添加
 
 ```groovy
-
-```
-
-2.项目build.gradle文件中添加
-
-```groovy
-
+    implementation 'org.jun1or.baselib:imgsel:1.0.1'
 ```
 
 ## 使用方法
@@ -79,6 +73,10 @@ List<String> imageList = data.getStringArrayListExtra(ImageSelectActivity.KEY_re
 
 
 ## 版本记录
+
+### 1.0.1
+
+- 升级至AndroidX
 
 ### 1.0.0
 - 初始版本

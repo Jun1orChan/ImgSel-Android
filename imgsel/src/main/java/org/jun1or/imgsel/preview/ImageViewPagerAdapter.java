@@ -1,16 +1,20 @@
 package org.jun1or.imgsel.preview;
 
-import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.viewpager.widget.PagerAdapter;
+
 import org.jun1or.imgsel.ISNav;
 import org.jun1or.imgsel.bean.Image;
-import com.istrong.widget.image.PhotoView;
+import org.jun1or.widget.image.PhotoView;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author cwj
+ */
 public class ImageViewPagerAdapter extends PagerAdapter {
 
     private List<Image> mImageList;

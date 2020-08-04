@@ -1,19 +1,24 @@
 package org.jun1or.imgsel.adapter;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.RecyclerView;
+
+
 import org.jun1or.imgsel.ISNav;
-import com.istrong.imgsel.R;
+import org.jun1or.imgsel.R;
 import org.jun1or.imgsel.bean.Folder;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author cwj
+ */
 public class FolderListRecAdapter extends RecyclerView.Adapter<FolderListRecAdapter.FolderViewHolder> {
 
 
@@ -56,8 +61,9 @@ public class FolderListRecAdapter extends RecyclerView.Adapter<FolderListRecAdap
                 notifyItemChanged(mCurSelectedIndex);
                 mCurSelectedIndex = position;
                 notifyItemChanged(mCurSelectedIndex);
-                if (mOnFolderItemClickListener != null)
+                if (mOnFolderItemClickListener != null) {
                     mOnFolderItemClickListener.onFolderItemClick(folder);
+                }
             }
         });
     }
@@ -84,6 +90,11 @@ public class FolderListRecAdapter extends RecyclerView.Adapter<FolderListRecAdap
     }
 
     public interface OnFolderItemClickListener {
+        /**
+         * 单击文件夹
+         *
+         * @param folder
+         */
         void onFolderItemClick(Folder folder);
     }
 }

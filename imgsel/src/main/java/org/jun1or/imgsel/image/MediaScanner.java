@@ -44,7 +44,8 @@ public class MediaScanner implements MediaScannerConnection.MediaScannerConnecti
     @Override
     public void onMediaScannerConnected() {
         for (int i = 0; i < mFilePaths.length; i++) {
-            mMediaScannerConnection.scanFile(mFilePaths[i], mMimeTypes[i]);//服务回调执行扫描
+            //服务回调执行扫描
+            mMediaScannerConnection.scanFile(mFilePaths[i], mMimeTypes[i]);
         }
         mFilePaths = null;
         mMimeTypes = null;
@@ -61,9 +62,12 @@ public class MediaScanner implements MediaScannerConnection.MediaScannerConnecti
     @Override
     public void onScanCompleted(String path, Uri uri) {
         scanTimes++;
-        if (scanTimes == mFilePaths.length) {//如果扫描完了全部文件
-            mMediaScannerConnection.disconnect();//断开扫描服务
-            scanTimes = 0;//复位计数
+        if (scanTimes == mFilePaths.length) {
+            //如果扫描完了全部文件
+            //断开扫描服务
+            mMediaScannerConnection.disconnect();
+            //复位计数
+            scanTimes = 0;
         }
     }
 }

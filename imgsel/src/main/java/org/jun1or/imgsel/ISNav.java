@@ -3,12 +3,17 @@ package org.jun1or.imgsel;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.Fragment;
 import android.widget.ImageView;
+
+import androidx.fragment.app.Fragment;
 
 import org.jun1or.imgsel.callback.ImageLoader;
 import org.jun1or.imgsel.image.ImageSelectActivity;
 
+
+/**
+ * @author cwj
+ */
 public class ISNav {
 
     private static ISNav instance;

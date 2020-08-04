@@ -2,20 +2,25 @@ package org.jun1or.imgsel.adapter;
 
 import android.graphics.Color;
 import android.graphics.PorterDuff;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import androidx.recyclerview.widget.RecyclerView;
+
+
 import org.jun1or.imgsel.ISNav;
-import com.istrong.imgsel.R;
 import org.jun1or.imgsel.ImageConfig;
+import org.jun1or.imgsel.R;
 import org.jun1or.imgsel.bean.Image;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author cwj
+ */
 public class ImageListRecAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private static int TYPE_CAMERA = 0;
@@ -59,34 +64,20 @@ public class ImageListRecAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-//        if (viewType == TYPE_CAMERA) {
-//            return new CameraItemViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.imgsel_item_flag, parent, false));
-//        } else
         return new MediaItemViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.imgsel_item_image, parent, false));
     }
 
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
-//        if (getItemViewType(position) == TYPE_CAMERA) {
-//            CameraItemViewHolder cameraItemViewHolder = (CameraItemViewHolder) holder;
-//            cameraItemViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    if (mOnItemClickListener != null)
-//                        mOnItemClickListener.onCameraItemClick();
-//                }
-//            });
-//            return;
-//        }
         final MediaItemViewHolder mediaItemViewHolder = (MediaItemViewHolder) holder;
         final Image image = mImageList.get(position);
-//        mediaItemViewHolder.llVideoFalgContainer.setVisibility(View.GONE);
         ISNav.getInstance().displayImage(holder.itemView.getContext(), image.path, mediaItemViewHolder.imgThumb);
         mediaItemViewHolder.imgThumb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mOnItemClickListener != null)
+                if (mOnItemClickListener != null) {
                     mOnItemClickListener.onMediaClick(image, position);
+                }
             }
         });
         if (isContainsImage(mCheckedList, image)) {
@@ -94,32 +85,25 @@ public class ImageListRecAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             mediaItemViewHolder.imgThumb.setColorFilter(Color.argb(130, 0, 0, 0),
                     PorterDuff.Mode.SRC_ATOP
             );
-//            mediaItemViewHolder.viewThumbOverLay.setBackgroundColor(Color.argb(130, 0, 0, 0));
         } else {
             mediaItemViewHolder.imgCheck.setImageResource(R.mipmap.imgsel_uncheck);
             mediaItemViewHolder.imgThumb.setColorFilter(Color.argb(50, 0, 0, 0),
                     PorterDuff.Mode.SRC_ATOP
             );
-//            mediaItemViewHolder.viewThumbOverLay.setBackgroundColor(Color.argb(0, 0, 0, 0));
         }
         mediaItemViewHolder.imgCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (isContainsImage(mCheckedList, image)) {
-//                    mediaItemViewHolder.imgCheck.setImageResource(R.mipmap.imgsel_uncheck);
-//                    mediaItemViewHolder.imgThumb.setColorFilter(Color.argb(50, 0, 0, 0),
-//                            PorterDuff.Mode.SRC_ATOP);
                     removeImage(mCheckedList, image);
                 } else {
                     if (mCheckedList.size() >= mISConfig.mMaxNum) {
                         //超过最大选择数量
-                        if (mOnItemClickListener != null)
+                        if (mOnItemClickListener != null) {
                             mOnItemClickListener.onReachMaxNum(mISConfig.mMaxNum);
+                        }
                         return;
                     }
-//                    mediaItemViewHolder.imgCheck.setImageResource(R.mipmap.imgsel_checked);
-//                    mediaItemViewHolder.imgThumb.setColorFilter(Color.argb(130, 0, 0, 0),
-//                            PorterDuff.Mode.SRC_ATOP);
                     if (!mISConfig.mMultiSelect) {
                         mCheckedList.clear();
                         notifyItemChanged(mLastChoiceIndex);
@@ -128,8 +112,9 @@ public class ImageListRecAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 }
                 mLastChoiceIndex = position;
                 notifyItemChanged(mLastChoiceIndex);
-                if (mOnItemClickListener != null)
+                if (mOnItemClickListener != null) {
                     mOnItemClickListener.onMediaCheckClick(mCheckedList, image);
+                }
             }
         });
     }
@@ -137,9 +122,6 @@ public class ImageListRecAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public int getItemViewType(int position) {
-//        if (position == 0)
-//            return TYPE_CAMERA;
-//        else
         return TYPE_MEDIA;
     }
 
@@ -173,8 +155,9 @@ public class ImageListRecAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public int getItemCount() {
-        if (mISConfig == null)
+        if (mISConfig == null) {
             mISConfig = new ImageConfig.Builder().build();
+        }
         return mImageList.size();
     }
 

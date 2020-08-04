@@ -3,6 +3,9 @@ package org.jun1or.imgsel.bean;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * @author cwj
+ */
 public class Folder implements Serializable {
 
     public String name;

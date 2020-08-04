@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.istrong.widget.layout.SquareFrameLayout
+<org.jun1or.widget.layout.SquareFrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -10,11 +10,6 @@
         android:layout_height="match_parent"
         android:scaleType="center"/>
 
-<!--    <View
-        android:id="@+id/viewThumbOverLay"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@android:color/transparent"/>-->
 
     <ImageView
         android:id="@+id/imgCheck"
@@ -23,29 +18,6 @@
         android:layout_gravity="right|top"
         android:src="@mipmap/imgsel_uncheck"/>
 
-    <!--  <LinearLayout
-          android:id="@+id/llVideoFlagContainer"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_gravity="bottom"
-          android:layout_margin="5dp"
-          android:gravity="center_vertical"
-          android:orientation="horizontal">
 
-          <ImageView
-              android:id="@+id/imgVideoFlag"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:scaleType="centerInside"
-              android:src="@mipmap/imgsel_flag_video"/>
 
-          <TextView
-              android:id="@+id/tvVideoDuration"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_marginLeft="3dp"
-              android:textColor="@color/imgsel_white"
-              android:textSize="13sp"/>
-      </LinearLayout>-->
-
-</com.istrong.widget.layout.SquareFrameLayout>
+</org.jun1or.widget.layout.SquareFrameLayout>
